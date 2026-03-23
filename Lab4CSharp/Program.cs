@@ -1,42 +1,59 @@
-﻿// See https://aka.ms/new-console-template for more information
-/// <summary>
-///  Top-level statements 
-///  Код програми (оператори)  вищого рівня
-/// </summary>
-///
-Console.WriteLine("Lab4 C# ");
-AnyFunc();
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-/// <summary>
-/// 
-///  Top-level statements must precede namespace and type declarations.
-/// At the top-level methods/functions can be defined and used
-/// На верхньому рівні можна визначати та використовувати методи/функції
-/// </summary>
-void AnyFunc()
+namespace Lab4CSharp
 {
-    Console.WriteLine(" Some function in top-level");
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.OutputEncoding = Encoding.UTF8;
+
+            // --- ЗАВДАННЯ 1: ПРЯМОКУТНИК ---
+            Console.WriteLine("=== ЗАВДАННЯ 1: RECTANGLE ===");
+            Rectangle rect = new Rectangle(5, 5, 10);
+            rect.Show();
+            Console.WriteLine($"rect[0] (сторона a): {rect[0]}");
+            rect++;
+            Console.WriteLine("Після rect++:");
+            rect.Show();
+            Console.WriteLine($"Рядок з об'єкта: {rect}");
+
+            // --- ЗАВДАННЯ 2: ВЕКТОР ---
+            Console.WriteLine("\n=== ЗАВДАННЯ 2: VECTOR SHORT ===");
+            VectorShort v1 = new VectorShort(3, 10);
+            VectorShort v2 = new VectorShort(3, 2);
+            Console.Write("V1: "); v1.Display();
+            Console.Write("V2: "); v2.Display();
+            Console.Write("V1 / V2: "); (v1 / v2).Display();
+            Console.Write("V2 << 2: "); (v2 << 2).Display();
+            Console.WriteLine($"V1 > V2? {v1 > v2}");
+            Console.WriteLine($"Всього об'єктів: {VectorShort.CountVectors()}");
+
+            // --- ЗАВДАННЯ 3: ПОКУПЦІ ---
+            Console.WriteLine("\n=== ЗАВДАННЯ 3: ПОКУПЦІ (STRUCTURES/RECORDS) ===");
+            List<CustomerRecord> customers = new List<CustomerRecord> {
+                new CustomerRecord("Іванов І.І.", "Київ", "093111", "1111"),
+                new CustomerRecord("Петров П.П.", "Львів", "093222", "2222"),
+                new CustomerRecord("Сидоров С.С.", "Одеса", "093333", "3333"),
+                new CustomerRecord("Мартинець М.З.", "Чернівці", "093444", "4444")
+            };
+
+            Console.WriteLine("Початковий список:");
+            customers.ForEach(c => Console.WriteLine(c));
+
+            // Видаляємо 3 з початку, додаємо 3 в кінець
+            if (customers.Count >= 3) customers.RemoveRange(0, 3);
+            customers.Add(new CustomerRecord("Новий 1", "Дніпро", "093001", "5555"));
+            customers.Add(new CustomerRecord("Новий 2", "Суми", "093002", "6666"));
+            customers.Add(new CustomerRecord("Новий 3", "Полтава", "093003", "7777"));
+
+            Console.WriteLine("\nОновлений список (після видалення 3 та додавання 3):");
+            customers.ForEach(c => Console.WriteLine(c));
+
+            Console.WriteLine("\nНатисніть будь-яку клавішу для завершення...");
+            Console.ReadKey();
+        }
+    }
 }
-Console.WriteLine("Problems 1 ");
-AnyFunc();
-//  приклад класів
-UserClass cl = new UserClass();
-cl.Name = " UserClass top-level ";
-Lab4CSharp.UserClass cl2 = new Lab4CSharp.UserClass();
-cl2.Name = " UserClass namespace Lab4CSharp ";
-Console.WriteLine(cl + "   " + cl2 + "   ");
-
-
-
-/// <summary>
-/// 
-/// Top-level statements must precede namespace and type declarations.
-/// Оператори верхнього рівня мають передувати оголошенням простору імен і типу.
-/// Створення класу(ів) або оголошенням простору імен є закіченням  іструкцій верхнього рівня
-/// 
-/// </summary>
-
-class UserClass
-{
-    public string Name { get; set; }
-};
