@@ -40,6 +40,8 @@ namespace Lab4CSharp
                 new CustomerRecord("Мартинець М.З.", "Чернівці", "093444", "4444")
             };
 
+
+
             Console.WriteLine("Початковий список:");
             customers.ForEach(c => Console.WriteLine(c));
 
