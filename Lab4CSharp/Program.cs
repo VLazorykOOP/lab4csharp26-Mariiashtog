@@ -20,7 +20,7 @@ namespace Lab4CSharp
             rect.Show();
             Console.WriteLine($"Рядок з об'єкта: {rect}");
 
-            // --- ЗАВДАННЯ 2: ВЕКТОР ---
+            // --- ЗАВДАННЯ 2: ВЕКТОР
             Console.WriteLine("\n=== ЗАВДАННЯ 2: VECTOR SHORT ===");
             VectorShort v1 = new VectorShort(3, 10);
             VectorShort v2 = new VectorShort(3, 2);
